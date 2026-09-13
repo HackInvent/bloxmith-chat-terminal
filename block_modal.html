@@ -1,0 +1,54 @@
+<div class="modal-panel block-config-modal chat-terminal-modal" role="dialog" aria-modal="true" aria-labelledby="{{ node_id }}ChatTerminalModalTitle" data-chat-terminal-root data-block-runtime-refresh="autonomous" data-node-id="{{ node_id }}" data-runtime-node-id="{{ runtime_node_id }}" data-node-kind="{{ node_kind }}" data-node-title="{{ node_title }}">
+  <div class="modal-header">
+    <div>
+      <span class="panel-kicker">Bloc {{ node_kind_title }}</span>
+      <h2 id="{{ node_id }}ChatTerminalModalTitle">{{ node_title }}</h2>
+    </div>
+    <button class="modal-close" type="button" aria-label="Fermer" data-close-block-modal>&times;</button>
+  </div>
+
+  <div class="chat-terminal-tabs" role="tablist" aria-label="Sections du bloc Chat terminal">
+    <button class="chat-terminal-tab is-active" id="{{ node_id }}ChatTerminalTabTerminal" type="button" role="tab" aria-selected="true" aria-controls="{{ node_id }}ChatTerminalPanelTerminal" data-chat-terminal-tab="terminal">Terminal</button>
+    <button class="chat-terminal-tab" id="{{ node_id }}ChatTerminalTabAttributes" type="button" role="tab" aria-selected="false" aria-controls="{{ node_id }}ChatTerminalPanelAttributes" data-chat-terminal-tab="attributes">Attributs</button>
+    <button class="chat-terminal-tab" id="{{ node_id }}ChatTerminalTabLogs" type="button" role="tab" aria-selected="false" aria-controls="{{ node_id }}ChatTerminalPanelLogs" data-chat-terminal-tab="logs">Logs</button>
+  </div>
+
+  <div class="chat-terminal-tab-panels">
+    <section class="chat-terminal-tab-panel is-active" id="{{ node_id }}ChatTerminalPanelTerminal" role="tabpanel" aria-labelledby="{{ node_id }}ChatTerminalTabTerminal" data-chat-terminal-panel="terminal">
+      <div class="chat-terminal-main" aria-label="Conversation">
+        <div class="chat-terminal-stream" data-chat-terminal-stream>
+          {{ messages_html }}
+        </div>
+        <form class="chat-terminal-compose" data-chat-terminal-form>
+          <div class="chat-terminal-compose-inputs">
+            <textarea data-chat-terminal-input rows="1" spellcheck="true" autocomplete="off" placeholder="Message">{{ pending_message }}</textarea>
+            <div class="chat-terminal-attachment-dropzone" data-chat-terminal-dropzone>
+              <span>Coller, déposer ou joindre des fichiers</span>
+              <div class="chat-terminal-pending-attachments" data-chat-terminal-pending-attachments></div>
+            </div>
+          </div>
+          <div class="chat-terminal-compose-actions">
+            <input data-chat-terminal-file-input type="file" multiple hidden />
+            <button class="ghost-btn chat-terminal-attach-btn" data-chat-terminal-attach type="button" title="Joindre un fichier" aria-label="Joindre un fichier">+</button>
+            <button class="chat-terminal-mic-btn" data-chat-terminal-mic type="button" title="Maintenir pour dicter" aria-label="Maintenir pour dicter">Mic</button>
+            <button class="solid-btn" data-chat-terminal-send type="submit">Envoyer</button>
+          </div>
+        </form>
+        <p class="chat-terminal-speech-status" data-chat-terminal-speech-status>Maintenez Mic pour dicter, relachez pour transcrire.</p>
+      </div>
+    </section>
+
+    <section class="chat-terminal-tab-panel" id="{{ node_id }}ChatTerminalPanelAttributes" role="tabpanel" aria-labelledby="{{ node_id }}ChatTerminalTabAttributes" data-chat-terminal-panel="attributes" hidden>
+      <div class="chat-terminal-side">
+        {{ attributes_html }}
+      </div>
+    </section>
+
+    <section class="chat-terminal-tab-panel" id="{{ node_id }}ChatTerminalPanelLogs" role="tabpanel" aria-labelledby="{{ node_id }}ChatTerminalTabLogs" data-chat-terminal-panel="logs" data-block-modal-error-panel hidden>
+      <div class="chat-terminal-logs">
+        {{ logs_html }}
+      </div>
+    </section>
+  </div>
+</div>
+
