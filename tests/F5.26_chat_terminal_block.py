@@ -438,7 +438,7 @@ def node_card_contract() -> None:
 
 def server_contract() -> None:
     with isolated_server() as server:
-        # Les surfaces sont des assets de release : le bundled kind n'en sert aucun.
+        # Surfaces are release assets: a bundled kind serves none of them.
         model = install_test_package(server, "chat_terminal")
         key = quote(release_key(model), safe="")
         served = lambda payload, suffix: next(

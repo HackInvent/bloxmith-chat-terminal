@@ -4,10 +4,10 @@
       <span class="panel-kicker">Bloc {{ node_kind_title }}</span>
       <h2 id="{{ node_id }}ChatTerminalModalTitle">{{ node_title }}</h2>
     </div>
-    <button class="modal-close" type="button" aria-label="Fermer" data-close-block-modal>&times;</button>
+    <button class="modal-close" type="button" aria-label="Close" data-close-block-modal>&times;</button>
   </div>
 
-  <div class="chat-terminal-tabs" role="tablist" aria-label="Sections du bloc Chat terminal">
+  <div class="chat-terminal-tabs" role="tablist" aria-label="Chat terminal block sections">
     <button class="chat-terminal-tab is-active" id="{{ node_id }}ChatTerminalTabTerminal" type="button" role="tab" aria-selected="true" aria-controls="{{ node_id }}ChatTerminalPanelTerminal" data-chat-terminal-tab="terminal">Terminal</button>
     <button class="chat-terminal-tab" id="{{ node_id }}ChatTerminalTabAttributes" type="button" role="tab" aria-selected="false" aria-controls="{{ node_id }}ChatTerminalPanelAttributes" data-chat-terminal-tab="attributes">Attributs</button>
     <button class="chat-terminal-tab" id="{{ node_id }}ChatTerminalTabLogs" type="button" role="tab" aria-selected="false" aria-controls="{{ node_id }}ChatTerminalPanelLogs" data-chat-terminal-tab="logs">Logs</button>
@@ -23,13 +23,13 @@
           <div class="chat-terminal-compose-inputs">
             <textarea data-chat-terminal-input rows="1" spellcheck="true" autocomplete="off" placeholder="Message">{{ pending_message }}</textarea>
             <div class="chat-terminal-attachment-dropzone" data-chat-terminal-dropzone>
-              <span>Coller, déposer ou joindre des fichiers</span>
+              <span>Paste, drop or attach files</span>
               <div class="chat-terminal-pending-attachments" data-chat-terminal-pending-attachments></div>
             </div>
           </div>
           <div class="chat-terminal-compose-actions">
             <input data-chat-terminal-file-input type="file" multiple hidden />
-            <button class="ghost-btn chat-terminal-attach-btn" data-chat-terminal-attach type="button" title="Joindre un fichier" aria-label="Joindre un fichier">+</button>
+            <button class="ghost-btn chat-terminal-attach-btn" data-chat-terminal-attach type="button" title="Attach a file" aria-label="Attach a file">+</button>
             <button class="chat-terminal-mic-btn" data-chat-terminal-mic type="button" title="Maintenir pour dicter" aria-label="Maintenir pour dicter">Mic</button>
             <button class="solid-btn" data-chat-terminal-send type="submit">Envoyer</button>
           </div>

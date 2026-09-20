@@ -765,7 +765,7 @@ function mountSpeechCapture(root, api, input) {
   }
   if (!navigator.mediaDevices?.getUserMedia || !window.MediaRecorder) {
     mic.disabled = true;
-    setSpeechStatus(root, "Micro navigateur indisponible sur cette page.", true);
+    setSpeechStatus(root, "The browser microphone is unavailable on this page.", true);
     return;
   }
   let recorder = null;

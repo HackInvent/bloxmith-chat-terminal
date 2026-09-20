@@ -9,7 +9,7 @@
       <span class="inspector-node-tag">{{ node_tag }}</span>
     </div>
     <div class="inspector-tabs">
-      <button class="inspector-tab {{ general_active }}" data-inspector-tab="general" type="button">Général</button>
+      <button class="inspector-tab {{ general_active }}" data-inspector-tab="general" type="button">General</button>
       <button class="inspector-tab {{ ports_active }} {{ ports_tab_hidden }}" data-inspector-tab="ports" type="button" {{ ports_tab_disabled }}>Ports</button>
     </div>
   </div>
@@ -25,23 +25,23 @@
   <div class="inspector-view {{ ports_hidden }}" data-inspector-panel-tab="ports">
     <div class="ports-editor-section">
       <div class="ports-editor-header">
-        <span class="group-label">Entrées</span>
+        <span class="group-label">Inputs</span>
         <span class="ports-editor-actions">
           <button class="ghost-btn add-port-btn {{ add_mcp_input_hidden }}" data-add-mcp-input-port type="button" {{ add_mcp_input_disabled }}>+ MCP</button>
-          <button class="ghost-btn add-port-btn {{ add_input_hidden }}" data-add-input-port type="button" {{ add_input_disabled }}>+ Ajouter une entrée</button>
+          <button class="ghost-btn add-port-btn {{ add_input_hidden }}" data-add-input-port type="button" {{ add_input_disabled }}>+ Add an input</button>
         </span>
       </div>
       <div class="ports-editor-list">{{ inputs_html }}</div>
     </div>
     <div class="ports-editor-section">
       <div class="ports-editor-header">
-        <span class="group-label">Sorties</span>
-        <button class="ghost-btn add-port-btn {{ add_output_hidden }}" data-add-output-port type="button" {{ add_output_disabled }}>+ Ajouter une sortie</button>
+        <span class="group-label">Outputs</span>
+        <button class="ghost-btn add-port-btn {{ add_output_hidden }}" data-add-output-port type="button" {{ add_output_disabled }}>+ Add an output</button>
       </div>
       <div class="ports-editor-list">{{ outputs_html }}</div>
     </div>
     <div class="inspector-copy">
-      Les noms sont normalisés automatiquement : minuscules, espaces remplacés par <code>_</code>.
+      Names are normalized automatically: lowercase, spaces replaced with <code>_</code>.
     </div>
   </div>
 </div>
