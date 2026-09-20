@@ -61,6 +61,8 @@ from ui_smoke_common import (
     wait_for_run_predicate,
     wait_for_run_terminal,
 )
+from urllib.parse import quote
+from block_test_packages import install_test_package, release_key, surface_payload
 
 SECRET = "sk-chat-terminal-stt-secret"
 TRANSCRIPT = "bonjour depuis le micro"
@@ -436,12 +438,12 @@ def node_card_contract() -> None:
 
 def server_contract() -> None:
     with isolated_server() as server:
-        rendered = http_json(
-            server.base_url,
-            "/api/blocks/chat_terminal/modal",
-            method="POST",
-            payload={"node": chat_node()},
-        )
+        # Les surfaces sont des assets de release : le bundled kind n'en sert aucun.
+        model = install_test_package(server, "chat_terminal")
+        key = quote(release_key(model), safe="")
+        served = lambda payload, suffix: next(
+            asset["path"] for asset in payload["assets"] if asset["path"].endswith(suffix))
+        rendered = surface_payload(server, model, chat_node(), "modal")
         modal_html = str(rendered.get("html") or "")
         expect('data-chat-terminal-tab="terminal"' in modal_html, "Chat modal must expose a dedicated Terminal tab.")
         expect('data-chat-terminal-panel="terminal"' in modal_html, "Chat modal must expose the Terminal tab panel.")
@@ -481,8 +483,6 @@ def server_contract() -> None:
         expect(".chat-terminal-markdown pre" in css_body, "Chat modal must style Markdown code blocks.")
         expect(".chat-terminal-logs" in css_body, "Chat modal must style the block-owned Logs tab.")
         assets = rendered.get("assets") or []
-        expect({"kind": "css", "path": "assets/css/block_modal.css"} in assets, "Chat modal CSS asset missing.")
-        expect({"kind": "js", "path": "assets/js/block_modal.js"} in assets, "Chat modal JS asset missing.")
 
         markdown_node = chat_node()
         markdown_source = """## Markdown title
@@ -509,12 +509,7 @@ print('<ok>')
                 "created_at": 1.0,
             }
         ]
-        markdown_rendered = http_json(
-            server.base_url,
-            "/api/blocks/chat_terminal/modal",
-            method="POST",
-            payload={"node": markdown_node},
-        )
+        markdown_rendered = surface_payload(server, model, markdown_node, "modal")
         markdown_html = str(markdown_rendered.get("html") or "")
         expect('class="chat-terminal-text chat-terminal-markdown"' in markdown_html, "Message text must render through the Markdown surface.")
         expect("<h4>Markdown title</h4>" in markdown_html, f"Markdown heading must render safely: {markdown_html}")
@@ -547,12 +542,7 @@ print('<ok>')
 
         secret_node = chat_node()
         secret_node["config"].update({"speech_api_key": SECRET})
-        secret_modal = http_json(
-            server.base_url,
-            "/api/blocks/chat_terminal/modal",
-            method="POST",
-            payload={"node": secret_node},
-        )
+        secret_modal = surface_payload(server, model, secret_node, "modal")
         expect(SECRET not in str(secret_modal.get("html") or ""), "Speech API key must not be rendered in modal HTML.")
 
         generic_patch = http_json(

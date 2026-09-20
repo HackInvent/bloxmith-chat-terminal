@@ -73,20 +73,6 @@ class ChatTerminalBlock(BlockDefinition):
 
     kind = "chat_terminal"
 
-    def ui_assets(self, surface: str = "modal") -> list[dict[str, str]]:
-        """Return block-owned frontend assets for the requested UI surface.
-
-        Args:
-            surface: UI surface requesting assets.
-        """
-
-        if surface == "modal":
-            return [
-                {"kind": "css", "path": "assets/css/block_modal.css"},
-                {"kind": "js", "path": "assets/js/block_modal.js"},
-            ]
-        return []
-
     def execute_runtime(self, context: BlockRuntimeContext) -> BlockRuntimeResult:
         """Persist chat history and publish a pending user message once.
 
