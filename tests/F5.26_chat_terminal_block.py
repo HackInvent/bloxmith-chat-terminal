@@ -65,7 +65,7 @@ from urllib.parse import quote
 from block_test_packages import install_test_package, release_key, surface_payload
 
 SECRET = "sk-chat-terminal-stt-secret"
-TRANSCRIPT = "bonjour depuis le micro"
+TRANSCRIPT = "hello from the microphone"
 
 
 class FakeChatSttHttpServer(ThreadingHTTPServer):

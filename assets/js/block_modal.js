@@ -214,7 +214,7 @@ function renderPendingAttachments(root) {
     const remove = document.createElement("button");
     remove.type = "button";
     remove.textContent = "×";
-    remove.title = "Retirer cette pièce jointe";
+    remove.title = "Remove this attachment";
     remove.addEventListener("click", () => {
       pendingAttachments(root).splice(index, 1);
       renderPendingAttachments(root);
