@@ -38,7 +38,7 @@
   "config": {
     "pending_message": "",
     "pending_message_id": "",
-    "pending_message_created_at": 0.0,
+    "pending_message_created_at": 0,
     "history_path": "user/projects/chat_terminal_history/{node_id}.jsonl",
     "ui_history": [],
     "speech_model": "gpt-4o-transcribe",
@@ -66,6 +66,28 @@
       {
         "kind": "js",
         "path": "assets/js/block_modal.js"
+      },
+      {
+        "kind": "css",
+        "path": "assets/css/properties.css"
+      },
+      {
+        "kind": "js",
+        "path": "assets/js/properties.js"
+      }
+    ],
+    "inspector_panel": [
+      {
+        "kind": "js",
+        "path": "assets/js/properties_mount.js"
+      },
+      {
+        "kind": "css",
+        "path": "assets/css/properties.css"
+      },
+      {
+        "kind": "js",
+        "path": "assets/js/properties.js"
       }
     ]
   }

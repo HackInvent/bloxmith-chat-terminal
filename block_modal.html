@@ -1,10 +1,13 @@
-<div class="modal-panel block-config-modal chat-terminal-modal" role="dialog" aria-modal="true" aria-labelledby="{{ node_id }}ChatTerminalModalTitle" data-chat-terminal-root data-block-runtime-refresh="autonomous" data-node-id="{{ node_id }}" data-runtime-node-id="{{ runtime_node_id }}" data-node-kind="{{ node_kind }}" data-node-title="{{ node_title }}">
+<div data-properties-surface="modal" class="modal-panel block-config-modal chat-terminal-modal" role="dialog" aria-modal="true" aria-labelledby="{{ node_id }}ChatTerminalModalTitle" data-chat-terminal-root data-block-runtime-refresh="autonomous" data-node-id="{{ node_id }}" data-runtime-node-id="{{ runtime_node_id }}" data-node-kind="{{ node_kind }}" data-node-title="{{ node_title }}">
   <div class="modal-header">
     <div>
       <span class="panel-kicker">Bloc {{ node_kind_title }}</span>
       <h2 id="{{ node_id }}ChatTerminalModalTitle">{{ node_title }}</h2>
     </div>
-    <button class="modal-close" type="button" aria-label="Close" data-close-block-modal>&times;</button>
+    <div class="modal-actions">
+      <button class="solid-btn" data-block-apply type="button" disabled data-i18n="ui.block_kit.apply">Apply</button>
+      <button class="ghost-btn" type="button" data-close-block-modal data-i18n="ui.block_kit.close">Close</button>
+    </div>
   </div>
 
   <div class="chat-terminal-tabs" role="tablist" aria-label="Chat terminal block sections">
@@ -51,4 +54,3 @@
     </section>
   </div>
 </div>
-

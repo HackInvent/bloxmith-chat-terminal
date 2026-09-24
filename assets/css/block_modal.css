@@ -6,6 +6,9 @@
   max-height: calc(100vh - 32px);
 }
 
+/* The persistent header owns Apply; do not repeat it inside the attributes form. */
+[data-block-release="chat_terminal@0.1.0"] .chat-terminal-side .inspector-actions:has(> [data-block-apply]:only-child) { display: none; }
+
 [data-block-release="chat_terminal@0.1.0"] .chat-terminal-tabs {
   display: flex;
   gap: 6px;

@@ -1,3 +1,5 @@
+import { withProperties } from "./properties.js";
+
 /**
  * Return a stable message id from a normalized chat entry.
  *
@@ -949,7 +951,7 @@ function mountAttachments(root, api, input) {
  * @param {HTMLElement} root - Chat terminal modal root.
  * @param {Object} api - Block UI API used to call block-owned actions.
  */
-export function mount(root, api) {
+function mountOwned(root, api) {
   mountTabs(root);
   mountHistoryRefresh(root, api);
   const form = root.querySelector("[data-chat-terminal-form]");
@@ -1009,4 +1011,9 @@ export function mount(root, api) {
     event.preventDefault();
     form.requestSubmit();
   });
+}
+
+/** Keep the block behavior and add properties-only accessibility. */
+export function mount(root, ...args) {
+  return withProperties(mountOwned).call(this, root, ...args);
 }
