@@ -10,9 +10,6 @@ Verified BloxSmith versions: **1.0.9** (bundled-block tests; see [test evidence]
 
 [![CHAT TERMINAL — Shows received messages and publishes user messages; it does not generate assistant responses.](media/thumbnail.webp)](media/cover.png)
 
-*Concept illustration. [Artwork and generation prompt](media/README.md).*
-
-
 An autonomous conversation block with fixed `msg` input/output ports. It publishes structured user messages and displays incoming messages.
 
 ## Ports
